@@ -15,6 +15,7 @@ An easy way to install and run A MySQL server on your Android device
 11. Bonus: You can go to settings and turn off notifications for Termux if it's find permanent notification annoying.
 
 ## Command
+**Note: Do not use this command as it is not completed yet**
 ```
-apt update && apt upgrade; pkg install wget; wget -O installer.sh "https://raw.githubusercontent.com/TheLastAirbendr/mysql-for-termux/master/installer.sh?token=AOELVOH2LMSKCQSZAA3MGIC7M6SEM"; chmod 755 installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh
+apt update && apt upgrade; pkg install wget; wget -O installer.sh <link>; chmod 755 installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh
 ```
