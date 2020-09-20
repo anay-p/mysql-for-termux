@@ -8,6 +8,14 @@ alias curtime="date +\"%d/%m/%Y %X: \""
 
 echo -n "" > logs.log
 
+wget -O setpass.sh <link> &&
+echo `curtime` "Downloaded 'setpass.sh' successfully" >> logs.log ||
+echo `curtime` "Failed to download 'setpass.sh'" >> logs.log
+
+wget -O start.sh <link> &&
+echo `curtime` "Downloaded 'start.sh' successfully" >> logs.log ||
+echo `curtime` "Failed to download 'start.sh'" >> logs.log
+
 for alias in start setpass
 do
 	echo `curtime` "Checking to see if alias '${alias}' exists..." >> logs.log
