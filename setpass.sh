@@ -19,9 +19,7 @@ do
 done
 
 echo -e "alter user root@localhost identified by \"${pass1}\"" > setpass.sql
-
 mysql mysql < setpass.sql > mysqllogs.log
-
 rm setpass.sql
 
 if [ ! -s mysqllogs.log ]
