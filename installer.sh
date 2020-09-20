@@ -6,7 +6,7 @@ apt upgrade
 shopt -s expand_aliases
 alias curtime="date +\"%d/%m/%Y %X: \""
 
-echo > logs.log
+echo -n "" > logs.log
 
 for alias in start setpass
 do
@@ -45,7 +45,6 @@ then
                 if [ $? -eq 0 ]
                 then
                         echo `curtime` "Installation complete" >> logs.log
-                        mysql_upgrade
 			~/start.sh &&
 			echo `curtime` "MySQL server started successfully" >> logs.log ||
 			echo `curtime` "MySQL server failed to start" >> logs.log
@@ -58,11 +57,13 @@ then
 
 else
         echo `curtime` "Package 'MariaDB' is already installed" >> logs.log
-	mysql_upgrade
 	~/start.sh &&
 	echo `curtime` "MySQL server started successfully" >> logs.log ||
 	echo `curtime` "MySQL server failed to start" >> logs.log
 fi
 
+pkg clean
 
-
+termux-wake-lock &&
+`curtime` "Acquired wakelock" >> logs.log ||
+`curtime` "Failed to acquire wakelock" >> logs.log
