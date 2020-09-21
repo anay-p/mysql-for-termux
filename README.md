@@ -16,6 +16,6 @@
 11. Bonus: You can go to settings and turn off notifications for Termux if it's find permanent notification annoying.
 
 ## Command
-```
+```shell
 apt update && apt upgrade; pkg install wget; wget -O installer.sh "https://drive.google.com/uc?id=1Mvyo1CCke_mnF-uFVecZqevj4WmesdZ4&export=download"; chmod u+x installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh; echo "MySQL installed successfully"
 ```
