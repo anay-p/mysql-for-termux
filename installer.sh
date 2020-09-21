@@ -23,7 +23,9 @@ do
 	echo `curtime` "Failed to make '${file}' executable" >> logs.log
 done
 
-for alias in start setpass
+echo "mysql -u root -p" > mysql.sh
+
+for alias in start setpass mysql
 do
 	echo `curtime` "Checking to see if alias '${alias}' exists..." >> logs.log
 	response=`grep "${alias}=" /data/data/com.termux/files/usr/etc/bash.bashrc`
@@ -31,7 +33,7 @@ do
 	then
 		echo `curtime` "Alias '${alias}' does not exist" >> logs.log
 		echo `curtime` "Creating alias '${alias}'..." >> logs.log
-		echo -e "alias ${alias}=\"~\\${alias}.sh\"" >> /data/data/com.termux/files/usr/etc/bash.bashrc &&
+		echo -e "alias ${alias}=\"~/${alias}.sh\"" >> /data/data/com.termux/files/usr/etc/bash.bashrc &&
 		echo `curtime` "Alias '${alias}' created successfully" >> logs.log ||
 		echo `curtime` "Failed to create alias '${alias}'" >> logs.log
 	else
