@@ -5,9 +5,10 @@ cond=""
 while [ "$cond" = "" ]
 do
         echo -n "Enter your new password: "
-        read pass1
-        echo -n "Re-enter your new password: "
-        read pass2
+        read -s pass1
+        echo -ne "\nRe-enter your new password: "
+        read -s pass2
+        echo
 
         if [ $pass1 = $pass2 ]
         then
