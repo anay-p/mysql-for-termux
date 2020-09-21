@@ -19,6 +19,15 @@
 ```shell
 apt update && apt upgrade; pkg install wget; wget -O installer.sh "https://drive.google.com/uc?id=1Mvyo1CCke_mnF-uFVecZqevj4WmesdZ4&export=download"; chmod u+x installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh; echo "MySQL installed successfully"
 ```
+> apt update && apt upgrade; pkg install wget; wget -O installer.sh "https://drive.google.com/uc?id=1Mvyo1CCke_mnF-uFVecZqevj4WmesdZ4&export=download"; chmod u+x installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh; echo "MySQL installed successfully"
 
 ## Errors
-If you get any errors, type into the Termux terminal (after the '$' symbol): ```cat logs.log``` and submit a screenshot of the output.
+If you get any errors, type into the Termux terminal (after the '$' symbol):
+```cat logs.log```
+and submit a screenshot of the output.
+
+## Troubleshooting
+If you get the following error when you enter ```mysql``` into the terminal:
+```Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)```
+Type into the terminal the command ```start``` to start the MySQL server. You should get the output: "MySQL server started".
+Now try using ```mysql``` again and everything should work normally.
