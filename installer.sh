@@ -3,91 +3,88 @@
 apt update
 apt upgrade
 
-shopt -s expand_aliases
-alias curtime="date +\"%d/%m/%Y %X: \""
-
 echologs()
 {
-echo `date +"%d/%m/%Y %X: "` "$@" >> logs.log
+	echo $(date +"%d/%m/%Y %X: ") "$@" >> logs.log
 }
 
 echo -n "" > logs.log
 
 wget -O setpass.sh "https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download" &&
-echo `curtime` "Downloaded 'setpass.sh' successfully" >> logs.log ||
-echo `curtime` "Failed to download 'setpass.sh' (code:${?})" >> logs.log
+echologs "Downloaded 'setpass.sh' successfully" ||
+echologs "Failed to download 'setpass.sh' (code:${?})"
 
 wget -O start.sh "https://drive.google.com/uc?id=1qA8ErY0OoCkblPRHSosRTHcUy9xGCx0u&export=download" &&
-echo `curtime` "Downloaded 'start.sh' successfully" >> logs.log ||
-echo `curtime` "Failed to download 'start.sh' (code:${?})" >> logs.log
+echologs "Downloaded 'start.sh' successfully" ||
+echologs "Failed to download 'start.sh' (code:${?})"
 
 echo "mysql -u root -p" > mysql.sh &&
-echo `curtime` "Created file 'mysql.sh' successfully" >> logs.log ||
-echo `curtime` "Failed to create file 'mysql.sh' (code:${?})" >> logs.log
+echologs "Created file 'mysql.sh' successfully" ||
+echologs "Failed to create file 'mysql.sh' (code:${?})"
 
 for file in start.sh setpass.sh mysql.sh
 do
 	chmod u+x "${file}" &&
-	echo `curtime` "Made '${file}' executable successfully" >> logs.log ||
-	echo `curtime` "Failed to make '${file}' executable (code:${?})" >> logs.log
+	echologs "Made '${file}' executable successfully" ||
+	echologs "Failed to make '${file}' executable (code:${?})"
 done
 
 for alias in start setpass mysql
 do
-	echo `curtime` "Checking to see if alias '${alias}' exists..." >> logs.log
-	response=`grep "${alias}=" /data/data/com.termux/files/usr/etc/bash.bashrc`
+	echologs "Checking to see if alias '${alias}' exists..."
+	response=$(grep "${alias}=" /data/data/com.termux/files/usr/etc/bash.bashrc)
 	if [ ! -n "$response" ]
 	then
-		echo `curtime` "Alias '${alias}' does not exist" >> logs.log
-		echo `curtime` "Creating alias '${alias}'..." >> logs.log
+		echologs "Alias '${alias}' does not exist"
+		echologs "Creating alias '${alias}'..."
 		echo -e "alias ${alias}=\"~/${alias}.sh\"" >> /data/data/com.termux/files/usr/etc/bash.bashrc &&
-		echo `curtime` "Alias '${alias}' created successfully" >> logs.log ||
-		echo `curtime` "Failed to create alias '${alias}' (code:${?})" >> logs.log
+		echologs "Alias '${alias}' created successfully" ||
+		echologs "Failed to create alias '${alias}' (code:${?})"
 	else
-		echo `curtime` "Alias '${alias}' already exists" >> logs.log
+		echologs "Alias '${alias}' already exists"
 	fi
 done
 
-echo `curtime` "Checking to see if package 'MariaDB' is installed..." >> logs.log
+echologs "Checking to see if package 'MariaDB' is installed..."
 
 dpkg -s mariadb &> /dev/null
-if [ $? -eq 1 ]  # If package is not installed
+if [ $? -eq 1 ]
 then
-        echo `curtime` "Package 'MariaDB' is not installed" >> logs.log
-        echo `curtime` "Installing..." >> logs.log
+        echologs "Package 'MariaDB' is not installed"
+	echologs "Installing..."
         pkg install mariadb
 
         code=$?
 
-        if [ $code -eq 100 ]  # If package was not found
+        if [ $code -eq 100 ]
         then
-                echo `curtime` "Could not locate package 'MariaDB'" >> logs.log
-                echo `curtime` "Failed to install package 'MariaDB'" >> logs.log
-        elif [ $code -eq 0 ]  # If command executed successfully
+                echologs "Could not locate package 'MariaDB'"
+                echologs "Failed to install package 'MariaDB'"
+        elif [ $code -eq 0 ]
         then
                 dpkg -s mariadb &> /dev/null
                 if [ $? -eq 0 ]
                 then
-                        echo `curtime` "Installation complete" >> logs.log
+                        echologs "Installation complete"
 			~/start.sh &&
-			echo `curtime` "MySQL server started successfully" >> logs.log ||
-			echo `curtime` "MySQL server failed to start (code:${?})" >> logs.log
+			echologs "MySQL server started successfully" ||
+			echologs "MySQL server failed to start (code:${?})"
                 else
-			echo `curtime` "Package installation command executed but package 'MariaDB' was not installed" >> logs.log
+			echologs "Package installation command executed but package 'MariaDB' was not installed"
                 fi
         else
-                echo `curtime` "Some unkown error occured during installation (code:${?})" >> logs.log
+                echologs "Some unkown error occured during installation (code:${code})"
         fi
 
 else
-        echo `curtime` "Package 'MariaDB' is already installed" >> logs.log
+        echologs "Package 'MariaDB' is already installed"
 	~/start.sh &&
-	echo `curtime` "MySQL server started successfully" >> logs.log ||
-	echo `curtime` "MySQL server failed to start (code:${?})" >> logs.log
+	echologs "MySQL server started successfully" ||
+	echologs "MySQL server failed to start (code:${?})"
 fi
 
 pkg clean
 
 termux-wake-lock &&
-echo `curtime` "Acquired wakelock" >> logs.log ||
-echo `curtime` "Failed to acquire wakelock (code:${?})" >> logs.log
+echologs "Acquired wakelock" ||
+echologs "Failed to acquire wakelock (code:${?})"
