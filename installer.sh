@@ -8,11 +8,11 @@ alias curtime="date +\"%d/%m/%Y %X: \""
 
 echo -n "" > logs.log
 
-wget -O setpass.sh <link> &&
+wget -O setpass.sh https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download &&
 echo `curtime` "Downloaded 'setpass.sh' successfully" >> logs.log ||
 echo `curtime` "Failed to download 'setpass.sh'" >> logs.log
 
-wget -O start.sh <link> &&
+wget -O start.sh https://drive.google.com/uc?id=1qA8ErY0OoCkblPRHSosRTHcUy9xGCx0u&export=download &&
 echo `curtime` "Downloaded 'start.sh' successfully" >> logs.log ||
 echo `curtime` "Failed to download 'start.sh'" >> logs.log
 
