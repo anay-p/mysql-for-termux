@@ -22,7 +22,7 @@ apt update && apt upgrade; pkg install wget; wget -O installer.sh "https://drive
 ```
 
 ## Errors
-If you get any errors, type into the Termux terminal (after the '$' symbol):
+If you get any errors during or after installation, type into the Termux terminal (after the '$' symbol):
 ```
 cat logs.log
 ```
