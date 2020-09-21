@@ -1,9 +1,18 @@
 #!/bin/bash
 
-output=`mysqld_safe -u root &`
-if [[ $output == *"Starting"* ]]
+output=`ps | grep mysql`
+
+if [ ! -n "$output" ]
 then
-        echo "MySQL server started"
+        echo "MySQL server is not running"
+        echo "Starting..."
+        useless=`mysqld_safe -u root &`
+        code=$?
+        if [ $code -eq 0 ]
+        then
+                echo "MySQL server started successfully"
+        else
+                echo "MySQL server failed to start (code:${code})"
+        fi
 else
         echo "MySQL server is already running"
-fi
