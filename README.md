@@ -28,9 +28,9 @@ cat logs.log
 and submit a screenshot of the output.
 
 ## Troubleshooting
-1. If you get the following error when you enter ```mysql``` into the terminal:
-   ```
-   Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)
-   ```
-   Type into the terminal the command ```start``` to start the MySQL server. You should get the output: "MySQL server started".
-   Now try using ```mysql``` again and everything should work normally.
+If you get the following error when you enter ```mysql``` into the terminal:
+```
+Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)
+```
+Type into the terminal the command ```start``` to start the MySQL server. You should get the output: "MySQL server started".
+Now try using ```mysql``` again and everything should work normally.
