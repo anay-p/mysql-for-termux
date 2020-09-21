@@ -6,9 +6,12 @@ apt upgrade
 shopt -s expand_aliases
 alias curtime="date +\"%d/%m/%Y %X: \""
 
-echo -n "" > logs.log &&
-echo `curtime` "Created file 'logs.log' successfully" >> logs.log ||
-echo `curtime` "Failed to create file 'logs.log' (code:${?})" >> logs.log
+echologs()
+{
+echo `date +"%d/%m/%Y %X: "` "$@" >> logs.log
+}
+
+echo -n "" > logs.log
 
 wget -O setpass.sh "https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download" &&
 echo `curtime` "Downloaded 'setpass.sh' successfully" >> logs.log ||
