@@ -8,13 +8,20 @@ alias curtime="date +\"%d/%m/%Y %X: \""
 
 echo -n "" > logs.log
 
-wget -O setpass.sh https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download &&
+wget -O setpass.sh "https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download" &&
 echo `curtime` "Downloaded 'setpass.sh' successfully" >> logs.log ||
 echo `curtime` "Failed to download 'setpass.sh'" >> logs.log
 
-wget -O start.sh https://drive.google.com/uc?id=1qA8ErY0OoCkblPRHSosRTHcUy9xGCx0u&export=download &&
+wget -O start.sh "https://drive.google.com/uc?id=1qA8ErY0OoCkblPRHSosRTHcUy9xGCx0u&export=download" &&
 echo `curtime` "Downloaded 'start.sh' successfully" >> logs.log ||
 echo `curtime` "Failed to download 'start.sh'" >> logs.log
+
+for file in start.sh setpass.sh
+do
+	chmod u+x "${file}" &&
+	echo `curtime` "Made '${file}' executable successfully" >> logs.log ||
+	echo `curtime` "Failed to make '${file}' executable" >> logs.log
+done
 
 for alias in start setpass
 do
@@ -73,5 +80,5 @@ fi
 pkg clean
 
 termux-wake-lock &&
-`curtime` "Acquired wakelock" >> logs.log ||
-`curtime` "Failed to acquire wakelock" >> logs.log
+echo `curtime` "Acquired wakelock" >> logs.log ||
+echo `curtime` "Failed to acquire wakelock" >> logs.log
