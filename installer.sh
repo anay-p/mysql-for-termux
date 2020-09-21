@@ -6,24 +6,28 @@ apt upgrade
 shopt -s expand_aliases
 alias curtime="date +\"%d/%m/%Y %X: \""
 
-echo -n "" > logs.log
+echo -n "" > logs.log &&
+echo `curtime` "Created file 'logs.log' successfully" >> logs.log ||
+echo `curtime` "Failed to create file 'logs.log' (code:${?})" >> logs.log
 
 wget -O setpass.sh "https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download" &&
 echo `curtime` "Downloaded 'setpass.sh' successfully" >> logs.log ||
-echo `curtime` "Failed to download 'setpass.sh'" >> logs.log
+echo `curtime` "Failed to download 'setpass.sh' (code:${?})" >> logs.log
 
 wget -O start.sh "https://drive.google.com/uc?id=1qA8ErY0OoCkblPRHSosRTHcUy9xGCx0u&export=download" &&
 echo `curtime` "Downloaded 'start.sh' successfully" >> logs.log ||
-echo `curtime` "Failed to download 'start.sh'" >> logs.log
+echo `curtime` "Failed to download 'start.sh' (code:${?})" >> logs.log
 
-for file in start.sh setpass.sh
+echo "mysql -u root -p" > mysql.sh &&
+echo `curtime` "Created file 'mysql.sh' successfully" >> logs.log ||
+echo `curtime` "Failed to create file 'mysql.sh' (code:${?})" >> logs.log
+
+for file in start.sh setpass.sh mysql.sh
 do
 	chmod u+x "${file}" &&
 	echo `curtime` "Made '${file}' executable successfully" >> logs.log ||
-	echo `curtime` "Failed to make '${file}' executable" >> logs.log
+	echo `curtime` "Failed to make '${file}' executable (code:${?})" >> logs.log
 done
-
-echo "mysql -u root -p" > mysql.sh
 
 for alias in start setpass mysql
 do
@@ -35,7 +39,7 @@ do
 		echo `curtime` "Creating alias '${alias}'..." >> logs.log
 		echo -e "alias ${alias}=\"~/${alias}.sh\"" >> /data/data/com.termux/files/usr/etc/bash.bashrc &&
 		echo `curtime` "Alias '${alias}' created successfully" >> logs.log ||
-		echo `curtime` "Failed to create alias '${alias}'" >> logs.log
+		echo `curtime` "Failed to create alias '${alias}' (code:${?})" >> logs.log
 	else
 		echo `curtime` "Alias '${alias}' already exists" >> logs.log
 	fi
@@ -64,7 +68,7 @@ then
                         echo `curtime` "Installation complete" >> logs.log
 			~/start.sh &&
 			echo `curtime` "MySQL server started successfully" >> logs.log ||
-			echo `curtime` "MySQL server failed to start" >> logs.log
+			echo `curtime` "MySQL server failed to start (code:${?})" >> logs.log
                 else
 			echo `curtime` "Package installation command executed but package 'MariaDB' was not installed" >> logs.log
                 fi
@@ -76,11 +80,11 @@ else
         echo `curtime` "Package 'MariaDB' is already installed" >> logs.log
 	~/start.sh &&
 	echo `curtime` "MySQL server started successfully" >> logs.log ||
-	echo `curtime` "MySQL server failed to start" >> logs.log
+	echo `curtime` "MySQL server failed to start (code:${?})" >> logs.log
 fi
 
 pkg clean
 
 termux-wake-lock &&
 echo `curtime` "Acquired wakelock" >> logs.log ||
-echo `curtime` "Failed to acquire wakelock" >> logs.log
+echo `curtime` "Failed to acquire wakelock (code:${?})" >> logs.log
