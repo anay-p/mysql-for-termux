@@ -16,3 +16,4 @@ then
         fi
 else
         echo "MySQL server is already running"
+fi
