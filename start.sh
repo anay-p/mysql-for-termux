@@ -1,12 +1,12 @@
 #!/bin/bash
 
-output=`ps | grep mysql`
+output=$(ps | grep mysql)
 
 if [ ! -n "$output" ]
 then
         echo "MySQL server is not running"
         echo "Starting..."
-        useless=`mysqld_safe -u root &`
+        useless=$(mysqld_safe -u root &)
         code=$?
         if [ $code -eq 0 ]
         then
