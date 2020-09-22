@@ -26,6 +26,7 @@ This is the command to be entered in step 2:
 ## Troubleshooting Errors
 1. If you get any errors during or after installation, type into the Termux terminal (after the '$' symbol): `cat logs.log` and submit a screenshot of the output.
 2. If you get the following error when you enter `setpass` or `mysql` into the terminal:  
+  
    ```
    Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)
    ```  
