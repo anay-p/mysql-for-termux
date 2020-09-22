@@ -1,6 +1,10 @@
 # mysql-for-termux
-### An easy way to install and run a MySQL server on your Android device.
-**Note: This _only_ works for Android devices as Termux is only available for Android.**
+**An easy way for students to install and run a MySQL server on their Android device.**  
+  
+Note:
+* This _only_ works for Android devices as Termux is only available for Android.
+* This is _only_ meant for learning purposes and must **not** be used for commercial purposes.
+
 
 ## Instructions
 1. Install the Termux app from Google Play [here](https://play.google.com/store/apps/details?id=com.termux).
