@@ -7,7 +7,8 @@
 2. Open the application, copy-paste the command given under the next heading and press enter on your Android device.  
 Now the installation will begin. Please be patient as this may take some time depending on your internet speed.  
 You will be asked to answer `Do you want to continue? [Y/n]` upto three times. Each time type in 'y' and press enter.  
-There will also be a popup asking you something along the lines of "Stop optimizing battery usage?". Press 'allow' or equivalent.  
+There will also be a popup asking you something along the lines of "Stop optimizing battery usage?" similar to the one shown below. Press 'allow' or equivalent.  
+  
 ![Stop optimizing battery usage](images/stop-optimizing-battery-usage.jpg)
 3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Enter the command `setpass` and set a password (for the user _root_).
 4. Enter the command `mysql` to start MySQL.
