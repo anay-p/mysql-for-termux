@@ -9,7 +9,7 @@
 4. Enter the command ```mysql``` to start MySQL.
 
 #### Note:
-1. Now you can close the application if you wish and the MySQL server will keep running in the background allowing you to use Python libraries like pymysql to connect to your databases through an app like Pydroid (avaialable on Google Play (here)[https://play.google.com/store/apps/details/Pydroid_3_IDE_for_Python_3?id=ru.iiec.pydroid3]), which is a Python editor and compiler for Android.
+1. Now you can close the application if you wish and the MySQL server will keep running in the background allowing you to use Python libraries like pymysql to connect to your databases through an app like Pydroid (avaialable on Google Play [here](https://play.google.com/store/apps/details/Pydroid_3_IDE_for_Python_3?id=ru.iiec.pydroid3)), which is a Python editor and compiler for Android.
 2. You can also go to Settings and turn off notifications for Termux if you find its permanent notification bothersome.
 
 ## Command
