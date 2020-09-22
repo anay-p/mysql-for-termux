@@ -9,7 +9,7 @@ Now the installation will begin. Please be patient as this may take some time de
 You will be asked to answer `Do you want to continue? [Y/n]` upto three times. Each time type in 'y' and press enter.  
 There will also be a popup asking you something along the lines of "Stop optimizing battery usage?" similar to the one shown below. Press 'allow' or equivalent.  
   ![Stop optimizing battery usage](images/stop-optimizing-battery-usage.jpg)  
-Do not worry, this app consumes very little battery
+Do not worry, this app consumes very little battery.
 3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Enter the command `setpass` and set a password (for the user _root_).
 4. Enter the command `mysql` to start MySQL.
 
@@ -20,8 +20,9 @@ Do not worry, this app consumes very little battery
 ## Command
 This is the command to be entered in step 2:
 
-> apt update && apt upgrade; pkg install wget; wget -O installer.sh "https://drive.google.com/uc?id=1Mvyo1CCke_mnF-uFVecZqevj4WmesdZ4&export=download"; chmod u+x installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh; echo "MySQL installed successfully"
-
+```shell
+apt update && apt upgrade; pkg install wget; wget -O installer.sh "https://drive.google.com/uc?id=1Mvyo1CCke_mnF-uFVecZqevj4WmesdZ4&export=download"; chmod u+x installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh; echo "MySQL installed successfully"
+```
 
 ## Troubleshooting Errors
 1. If you get any errors during or after installation, type into the Termux terminal (after the '$' symbol): `cat logs.log` and submit a screenshot of the output.
