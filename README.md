@@ -4,7 +4,12 @@
 
 ## Instructions
 1. Install the Termux app from Google Play [here](https://play.google.com/store/apps/details?id=com.termux).
-2. Open the application, copy-paste the command given under the next heading and press enter on your Android device. Now the installation will being. Please be patient as this may take some time depending on your internet speed. You will be asked to answer `Do you want to continue? [Y/n]` upto three times. Each time type in 'y' and press enter. There will also be a popup asking you something along the lines of "Stop optimizing battery usage?". Press 'allow' or equivalent.
+2. Open the application, copy-paste the command given under the next heading and press enter on your Android device.  
+Now the installation will begin. Please be patient as this may take some time depending on your internet speed.  
+You will be asked to answer `Do you want to continue? [Y/n]` upto three times. Each time type in 'y' and press enter.  
+![Stop optimizing battery usage](mysql-for-termux/images/stop-optimizing-battery-usage.jpg)
+Format: ![Image not found](mysql-for-termux/images/stop-optimizing-battery-usage.jpg)  
+There will also be a popup asking you something along the lines of "Stop optimizing battery usage?". Press 'allow' or equivalent.
 3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Enter the command `setpass` and set a password (for the user _root_).
 4. Enter the command `mysql` to start MySQL.
 
@@ -20,9 +25,9 @@ This is the command to be entered in step 2:
 
 ## Troubleshooting Errors
 1. If you get any errors during or after installation, type into the Termux terminal (after the '$' symbol): `cat logs.log` and submit a screenshot of the output.
-2. If you get the following error when you enter `setpass` or `mysql` into the terminal:
-   
-   ```
-   Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)
-   ```
-   Type into the terminal the command `start` to start the MySQL server. You should get the output: "MySQL server started". Now try using `setpass` / `mysql` again and everything should work normally. If you are still getting errors, then run the command `cat logs.log` and submit a screenshot of the output.
+2. If you get the following error when you enter `setpass` or `mysql` into the terminal:     
+```
+Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)
+```  
+Type into the terminal the command `start` to start the MySQL server. You should get the output: "MySQL server started". Now try using `setpass` / `mysql` again and everything should work normally.  
+If you are still getting errors, then run the command `cat logs.log` and submit a screenshot of the output.
