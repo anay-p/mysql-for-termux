@@ -24,7 +24,7 @@ Do not worry, this app does not consume much battery at all.
 This is the command to be entered in step 2:
 
 ```shell
-apt update && apt upgrade; pkg install wget; wget -O mysql.tar.gz "<link>"; cd ..; tar -xzf mysql.tar.gz -C home --strip-components 1 && cd home && rm -r images && rm README.md; chmod u+x installer.sh; ./installer.sh; source "/data/data/com.termux/files/usr/etc/bash.bashrc"; rm installer.sh; echo "MySQL installed successfully"
+apt update && apt upgrade; pkg install wget; wget -O mysql.tar.gz "<link>"; cd ..; tar -xzf mysql.tar.gz -C home --strip-components 1 && cd home && rm -r images && rm README.md; chmod u+x installer.sh; ./installer.sh; source "~/../usr/etc/bash.bashrc"; rm installer.sh
 ```
 
 ## Troubleshooting Errors
