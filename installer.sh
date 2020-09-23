@@ -10,25 +10,25 @@ echologs()
 
 echo -n "" > logs.log
 
-for filename in start.sh setpass.sh
+for name in setpass start-server start-client
 do
-	chmod u+x "${filename}.sh" &&
-	echologs "Made '${filename}.sh' executable successfully" ||
-	echologs "Failed to make '${filename}.sh' executable (code:${?})"
-done
+	chmod u+x "${name}.sh" &&
+	echologs "Made '${name}.sh' executable successfully" ||
+	echologs "Failed to make '${name}.sh' executable (code:${?})"
 
-echologs "Checking to see if alias 'start-server' exists..."
-response=$(grep "start-server=" ~/../usr/etc/bash.bashrc)
-if [ ! -n "$response" ]
-then
-	echologs "Alias 'start-server' does not exist"
-	echologs "Creating alias 'start-server'..."
-	echo -e "alias start-server=\"~/start.sh\"" >> ~/../usr/etc/bash.bashrc &&
-	echologs "Alias '${alias}' created successfully" ||
-	echologs "Failed to create alias '${alias}' (code:${?})"
-else
-	echologs "Alias '${alias}' already exists"
-fi
+	echologs "Checking to see if alias ${name} exists..."
+	response=$(grep "${name}=" ~/../usr/etc/bash.bashrc)
+	if [ ! -n "$response" ]
+	then
+		echologs "Alias '${name}' does not exist"
+		echologs "Creating alias '${name}'..."
+		echo -e "alias ${name}=\"~/${name}.sh\"" >> ~/../usr/etc/bash.bashrc &&
+		echologs "Alias '${name}' created successfully" ||
+		echologs "Failed to create alias '${name}' (code:${?})"
+	else
+		echologs "Alias '${name}' already exists"
+	fi
+done
 
 echologs "Checking to see if package 'MariaDB' is installed..."
 
