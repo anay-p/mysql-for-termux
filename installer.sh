@@ -10,40 +10,25 @@ echologs()
 
 echo -n "" > logs.log
 
-wget -O setpass.sh "https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download" &&
-echologs "Downloaded 'setpass.sh' successfully" ||
-echologs "Failed to download 'setpass.sh' (code:${?})"
-
-wget -O start.sh "https://drive.google.com/uc?id=1qA8ErY0OoCkblPRHSosRTHcUy9xGCx0u&export=download" &&
-echologs "Downloaded 'start.sh' successfully" ||
-echologs "Failed to download 'start.sh' (code:${?})"
-
-echo "mysql -u root -p" > mysql.sh &&
-echologs "Created file 'mysql.sh' successfully" ||
-echologs "Failed to create file 'mysql.sh' (code:${?})"
-
-for file in start.sh setpass.sh mysql.sh
+for filename in start.sh setpass.sh
 do
-	chmod u+x "${file}" &&
-	echologs "Made '${file}' executable successfully" ||
-	echologs "Failed to make '${file}' executable (code:${?})"
+	chmod u+x "${filename}.sh" &&
+	echologs "Made '${filename}.sh' executable successfully" ||
+	echologs "Failed to make '${filename}.sh' executable (code:${?})"
 done
 
-for alias in start setpass mysql
-do
-	echologs "Checking to see if alias '${alias}' exists..."
-	response=$(grep "${alias}=" /data/data/com.termux/files/usr/etc/bash.bashrc)
-	if [ ! -n "$response" ]
-	then
-		echologs "Alias '${alias}' does not exist"
-		echologs "Creating alias '${alias}'..."
-		echo -e "alias ${alias}=\"~/${alias}.sh\"" >> /data/data/com.termux/files/usr/etc/bash.bashrc &&
-		echologs "Alias '${alias}' created successfully" ||
-		echologs "Failed to create alias '${alias}' (code:${?})"
-	else
-		echologs "Alias '${alias}' already exists"
-	fi
-done
+echologs "Checking to see if alias 'start-server' exists..."
+response=$(grep "start-server=" ~/../usr/etc/bash.bashrc)
+if [ ! -n "$response" ]
+then
+	echologs "Alias 'start-server' does not exist"
+	echologs "Creating alias 'start-server'..."
+	echo -e "alias start-server=\"~/start.sh\"" >> ~/../usr/etc/bash.bashrc &&
+	echologs "Alias '${alias}' created successfully" ||
+	echologs "Failed to create alias '${alias}' (code:${?})"
+else
+	echologs "Alias '${alias}' already exists"
+fi
 
 echologs "Checking to see if package 'MariaDB' is installed..."
 
