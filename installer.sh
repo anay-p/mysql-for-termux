@@ -1,8 +1,5 @@
 #!/bin/bash
 
-apt update
-apt upgrade
-
 echologs()
 {
 	echo $(date +"%d/%m/%Y %X: ") "$@" >> logs.log
