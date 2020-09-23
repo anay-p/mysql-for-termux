@@ -24,7 +24,7 @@ Do not worry, this app does not consume much battery at all.
 This is the command to be entered in step 2:
 
 ```shell
-apt update && apt upgrade; pkg install wget; wget -O mysql.tar.gz "https://github.com/TheLastAirbendr/mysql-for-termux/archive/2.0.0.tar.gz"; cd ..; tar -xzf mysql.tar.gz -C home --strip-components 1 && rm mysql.tar.gz && cd home && rm -r images && rm README.md; chmod u+x installer.sh; ./installer.sh; source "~/../usr/etc/bash.bashrc"; rm installer.sh
+apt update && apt upgrade; pkg install wget; cd ..; wget -O mysql.tar.gz "https://github.com/TheLastAirbendr/mysql-for-termux/archive/2.0.0.tar.gz"; tar -xzf mysql.tar.gz -C home --strip-components 1 && rm mysql.tar.gz && cd home && rm -r images && rm README.md; chmod u+x installer.sh; ./installer.sh; source "~/../usr/etc/bash.bashrc"; rm installer.sh
 ```
 
 ## Troubleshooting Errors
