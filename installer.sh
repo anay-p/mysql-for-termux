@@ -73,3 +73,5 @@ pkg clean
 termux-wake-lock &&
 echologs "Acquired wakelock" ||
 echologs "Failed to acquire wakelock (code:${?})"
+
+echo "MySQL installed successfully"
