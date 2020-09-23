@@ -14,17 +14,16 @@ There will also be a popup asking you something along the lines of "Stop optimiz
 <img src="images/stop-optimizing-battery-usage.jpg" height="50%" width="50%" alt="Stop optimizing battery usage?"></img>  
 Do not worry, this app does not consume much battery at all.
 3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Enter the command `setpass` and set a password (for the user _root_).
-4. Enter the command `start-client` to start MySQL.
+4. Enter the command `start-client` to start the MySQL client or close the Termux application. The MySQL server will keep running in the background allowing you to use Python libraries like PyMySQL to connect to your databases through an app like Pydroid (avaialable on Google Play [here](https://play.google.com/store/apps/details/Pydroid_3_IDE_for_Python_3?id=ru.iiec.pydroid3)), which is a Python editor and compiler for Android.
 
 #### Note:
-1. Now you can close the application if you wish and the MySQL server will keep running in the background allowing you to use Python libraries like pymysql to connect to your databases through an app like Pydroid (avaialable on Google Play [here](https://play.google.com/store/apps/details/Pydroid_3_IDE_for_Python_3?id=ru.iiec.pydroid3)), which is a Python editor and compiler for Android.
-2. You can also go to Settings and turn off notifications for Termux if you find its permanent notification bothersome.
+You can also go to Settings and turn off notifications for Termux if you find its permanent notification bothersome.
 
 ## Command
 This is the command to be entered in step 2:
 
 ```shell
-apt update && apt upgrade; pkg install wget; cd ..; wget -O mysql.tar.gz "https://github.com/TheLastAirbendr/mysql-for-termux/archive/v2.0.1.tar.gz"; tar -xzf mysql.tar.gz -C home --strip-components 1 && rm mysql.tar.gz && cd home && rm -r images && rm README.md; chmod u+x installer.sh; ./installer.sh; source ~/../usr/etc/bash.bashrc; rm installer.sh
+apt update && apt upgrade; pkg install wget; cd ..; wget -O mysql.tar.gz "https://github.com/TheLastAirbendr/mysql-for-termux/archive/v2.0.2.tar.gz"; tar -xzf mysql.tar.gz -C home --strip-components 1 && rm mysql.tar.gz && cd home && rm -r images && rm README.md; chmod u+x installer.sh; ./installer.sh; source ~/../usr/etc/bash.bashrc; rm installer.sh
 ```
 
 ## Troubleshooting Errors
