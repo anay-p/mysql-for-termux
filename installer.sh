@@ -51,7 +51,7 @@ then
                 if [ $? -eq 0 ]
                 then
                         echologs "Installation complete"
-			~/start.sh &&
+			~/start-server.sh &&
 			echologs "MySQL server started successfully" ||
 			echologs "MySQL server failed to start (code:${?})"
                 else
@@ -63,7 +63,7 @@ then
 
 else
         echologs "Package 'MariaDB' is already installed"
-	~/start.sh &&
+	~/start-server.sh &&
 	echologs "MySQL server started successfully" ||
 	echologs "MySQL server failed to start (code:${?})"
 fi
