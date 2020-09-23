@@ -13,7 +13,7 @@ You will be asked to answer `Do you want to continue? [Y/n]` upto three times. E
 There will also be a popup asking you something along the lines of "Stop optimizing battery usage?" similar to the one shown below. Press 'allow' or equivalent.  
 <img src="images/stop-optimizing-battery-usage.jpg" height="50%" width="50%" alt="Stop optimizing battery usage?"></img>  
 Do not worry, this app does not consume much battery at all.
-3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Enter the command `setpass` and set a password (for the user _root_).
+3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Now, the MySQL server has started on your machine. Enter the command `setpass` and set a password (for the user _root_). This can _only_ be done while the server is running.
 4. Enter the command `start-client` to start the MySQL client or close the Termux application. The MySQL server will keep running in the background allowing you to use Python libraries like PyMySQL to connect to your databases through an app like Pydroid (avaialable on Google Play [here](https://play.google.com/store/apps/details/Pydroid_3_IDE_for_Python_3?id=ru.iiec.pydroid3)), which is a Python editor and compiler for Android.
 
 #### Note:
