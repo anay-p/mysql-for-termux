@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output=$(ps | grep mysql)
+output=$(ps -o pid= -o comm= | grep mysqld_safe)
 
 if [ ! -n "$output" ]
 then

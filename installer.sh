@@ -1,8 +1,5 @@
 #!/bin/bash
 
-apt update
-apt upgrade
-
 echologs()
 {
 	echo $(date +"%d/%m/%Y %X: ") "$@" >> logs.log
@@ -10,38 +7,23 @@ echologs()
 
 echo -n "" > logs.log
 
-wget -O setpass.sh "https://drive.google.com/uc?id=1sT6WUgypphXFqnjHQk3Eu3lVINX8eEt5&export=download" &&
-echologs "Downloaded 'setpass.sh' successfully" ||
-echologs "Failed to download 'setpass.sh' (code:${?})"
-
-wget -O start.sh "https://drive.google.com/uc?id=1qA8ErY0OoCkblPRHSosRTHcUy9xGCx0u&export=download" &&
-echologs "Downloaded 'start.sh' successfully" ||
-echologs "Failed to download 'start.sh' (code:${?})"
-
-echo "mysql -u root -p" > mysql.sh &&
-echologs "Created file 'mysql.sh' successfully" ||
-echologs "Failed to create file 'mysql.sh' (code:${?})"
-
-for file in start.sh setpass.sh mysql.sh
+for name in setpass start-server start-client
 do
-	chmod u+x "${file}" &&
-	echologs "Made '${file}' executable successfully" ||
-	echologs "Failed to make '${file}' executable (code:${?})"
-done
+	chmod u+x "${name}.sh" &&
+	echologs "Made '${name}.sh' executable successfully" ||
+	echologs "Failed to make '${name}.sh' executable (code:${?})"
 
-for alias in start setpass mysql
-do
-	echologs "Checking to see if alias '${alias}' exists..."
-	response=$(grep "${alias}=" /data/data/com.termux/files/usr/etc/bash.bashrc)
+	echologs "Checking to see if alias ${name} exists..."
+	response=$(grep "${name}=" ~/../usr/etc/bash.bashrc)
 	if [ ! -n "$response" ]
 	then
-		echologs "Alias '${alias}' does not exist"
-		echologs "Creating alias '${alias}'..."
-		echo -e "alias ${alias}=\"~/${alias}.sh\"" >> /data/data/com.termux/files/usr/etc/bash.bashrc &&
-		echologs "Alias '${alias}' created successfully" ||
-		echologs "Failed to create alias '${alias}' (code:${?})"
+		echologs "Alias '${name}' does not exist"
+		echologs "Creating alias '${name}'..."
+		echo -e "alias ${name}=\"~/${name}.sh\"" >> ~/../usr/etc/bash.bashrc &&
+		echologs "Alias '${name}' created successfully" ||
+		echologs "Failed to create alias '${name}' (code:${?})"
 	else
-		echologs "Alias '${alias}' already exists"
+		echologs "Alias '${name}' already exists"
 	fi
 done
 
@@ -66,7 +48,7 @@ then
                 if [ $? -eq 0 ]
                 then
                         echologs "Installation complete"
-			~/start.sh &&
+			~/start-server.sh &&
 			echologs "MySQL server started successfully" ||
 			echologs "MySQL server failed to start (code:${?})"
                 else
@@ -78,7 +60,7 @@ then
 
 else
         echologs "Package 'MariaDB' is already installed"
-	~/start.sh &&
+	~/start-server.sh &&
 	echologs "MySQL server started successfully" ||
 	echologs "MySQL server failed to start (code:${?})"
 fi
@@ -88,3 +70,5 @@ pkg clean
 termux-wake-lock &&
 echologs "Acquired wakelock" ||
 echologs "Failed to acquire wakelock (code:${?})"
+
+echo "MySQL installed successfully"
