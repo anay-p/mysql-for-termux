@@ -14,7 +14,7 @@ There will also be a popup asking you something along the lines of "Stop optimiz
 <img src="images/stop-optimizing-battery-usage.jpg" height="50%" width="50%" alt="Stop optimizing battery usage?"></img>  
 Do not worry, this app does not consume much battery at all.
 3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Enter the command `setpass` and set a password (for the user _root_).
-4. Enter the command `mysql` to start MySQL.
+4. Enter the command `start-client` to start MySQL.
 
 #### Note:
 1. Now you can close the application if you wish and the MySQL server will keep running in the background allowing you to use Python libraries like pymysql to connect to your databases through an app like Pydroid (avaialable on Google Play [here](https://play.google.com/store/apps/details/Pydroid_3_IDE_for_Python_3?id=ru.iiec.pydroid3)), which is a Python editor and compiler for Android.
@@ -29,10 +29,10 @@ apt update && apt upgrade; pkg install wget; wget -O mysql.tar.gz "<link>"; cd .
 
 ## Troubleshooting Errors
 1. If you get any errors during or after installation, type into the Termux terminal (after the '$' symbol): `cat logs.log` and submit a screenshot of the output.
-2. If you get the following error when you enter `setpass` or `mysql` into the terminal:  
+2. If you get the following error when you enter `setpass` or `start-client` into the terminal:  
   
    ```
    Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)
    ```  
-   Type into the terminal the command `start` to start the MySQL server. You should get the output: "MySQL server started". Now try using `setpass` / `mysql` again and everything should work normally.  
-   If you are still getting errors, then run the command `cat logs.log` and submit a screenshot of the output.
+   Type into the terminal the command `start-server` to start the MySQL server. You should get the output: "MySQL server started". Now try using `setpass` / `start-client` again and everything should work normally.  
+   If you are still getting errors anyway, then run the command `cat logs.log` and submit a screenshot of the output.
