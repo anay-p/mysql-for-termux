@@ -6,10 +6,10 @@ Note:
 * This is _only_ meant for learning purposes and must **not** be used for commercial purposes.
 
 ## Instructions
-1. Install the Termux app from Google Play [here](https://play.google.com/store/apps/details?id=com.termux).
+1. Install the Termux app from F-Droid [here](https://f-droid.org/packages/com.termux/).
 2. Open the application, copy-paste the command given under the next heading and press enter on your Android device.  
 Now the installation will begin. Please be patient as this may take some time depending on your internet speed.  
-You will be asked to answer `Do you want to continue? [Y/n]` upto three times. Each time type in 'y' and press enter.  
+You will be prompted to answer `Do you want to continue? [Y/n]` upto four times. Each time type in 'y' and press enter.  
 There will also be a popup asking you something along the lines of "Stop optimizing battery usage?" similar to the one shown below. Press 'allow' or equivalent.  
 <img src="images/stop-optimizing-battery-usage.jpg" height="50%" width="50%" alt="Stop optimizing battery usage?"></img>  
 Do not worry, this app does not consume much battery at all.
