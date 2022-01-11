@@ -50,9 +50,7 @@ for fname in ["setpass", "start-client", "start-server"]:
             else:
                 log(f"Alias '{fname}' created successfully")
 
-subprocess.run(["source", "data/data/com.termux/files/usr/etc/bash.bashrc"])
-
-start_server_proc = subprocess.run(["start-server"])
+start_server_proc = subprocess.run(["./start-server.sh"])
 code = start_server_proc.returncode
 if code == 0:
     log("MySQL server started successfully")
