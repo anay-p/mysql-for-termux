@@ -8,12 +8,11 @@ Note:
 ## Instructions
 1. Install the Termux app from F-Droid [here](https://f-droid.org/packages/com.termux/).
 2. Open the application, copy-paste the command given under the next heading and press enter on your Android device.  
-Now the installation will begin. Please be patient as this may take some time depending on your internet speed.  
-You will be prompted to answer `Do you want to continue? [Y/n]` upto four times. Each time type in 'y' and press enter.  
-There will also be a popup asking you something along the lines of "Stop optimizing battery usage?" similar to the one shown below. Press 'allow' or equivalent.  
+Now the installation will begin. Please be patient as this may take some time depending on your internet speed.   
+During installation, a popup will appear, asking you something along the lines of "Stop optimizing battery usage?" similar to the one shown below. Press 'allow' or equivalent.  
 <img src="images/stop-optimizing-battery-usage.jpg" height="50%" width="50%" alt="Stop optimizing battery usage?"></img>  
 Do not worry, this app does not consume much battery at all.
-3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear. Now, the MySQL server has started on your machine. Enter the command `setpass` and set a password (for the user _root_). This can _only_ be done while the server is running.
+3. When the entire installation process is completed, a text saying "MySQL installed successfully" should appear at the end. Now, the MySQL server has started on your machine. Enter the command `setpass` and set a password (for the user _root_). Note that this can _only_ be done while the server is running.
 4. Enter the command `start-client` to start the MySQL client or close the Termux application. The MySQL server will keep running in the background allowing you to use Python libraries like PyMySQL to connect to your databases through an app like Pydroid (avaialable on Google Play [here](https://play.google.com/store/apps/details/Pydroid_3_IDE_for_Python_3?id=ru.iiec.pydroid3)), which is a Python editor and compiler for Android.
 
 #### Note:
@@ -23,7 +22,7 @@ You can also go to Settings and turn off notifications for Termux if you find it
 This is the command to be entered in step 2:
 
 ```shell
-apt update && apt upgrade; pkg install wget; cd ..; wget -O mysql.tar.gz "https://github.com/TheLastAirbendr/mysql-for-termux/archive/v2.0.2.tar.gz"; tar -xzf mysql.tar.gz -C home --strip-components 1 && rm mysql.tar.gz && cd home && rm -r images && rm README.md; chmod u+x installer.sh; ./installer.sh; source ~/../usr/etc/bash.bashrc; rm installer.sh
+yes | pkg upgrade && pkg in git python -y && cd && git clone "https://github.com/TheLastAirbendr/mysql-for-termux.git" && cd mysql-for-termux && python installer.py && source ~/../usr/etc/bash.bashrc
 ```
 
 ## Troubleshooting Errors
@@ -35,7 +34,7 @@ apt update && apt upgrade; pkg install wget; cd ..; wget -O mysql.tar.gz "https:
 3. If you get the following error when you enter `setpass` or `start-client` into the terminal:  
   
    ```
-   Error 2002 (HY000): Can't connect to local MySQL server through the socket '/data/data/com.termux/files/usr/tmp/mysqld.sock' (111)
+   ERROR 2002 (HY000): Can't connect to local server through socket '/data/data/com.termux/files/usr/var/run/mysqld.sock' (2)
    ```  
-   Type into the terminal the command `start-server` to start the MySQL server. You should get the output: "MySQL server started". Now try using `setpass` / `start-client` again and everything should work normally.  
+   Type into the terminal the command `start-server` to start the MySQL server. You should get this output at the end: "MySQL server started". Now try using `setpass` / `start-client` again and everything should work normally.  
    If you are still getting errors anyway, then run the command `cat logs.log` and submit a screenshot of the output.
