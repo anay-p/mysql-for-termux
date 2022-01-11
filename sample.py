@@ -1,6 +1,6 @@
 import pymysql as sql
 
-db = dql.connect(host="localhost", user="root", passwd="1234")
+db = sql.connect(host="localhost", user="root", passwd="1234")
 cur = db.cursor()
 
 cur.execute("SHOW DATABASES;")
