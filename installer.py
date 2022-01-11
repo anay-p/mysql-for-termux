@@ -9,14 +9,14 @@ def log(message: str) -> None:
     log_file.write(text)
 
 log("Checking to see if package 'MariaDB' is installed...")
-check_stat_proc = subprocess.call(["dpkg", "-s", "mariadb"], capture_output=True, text=True)
+check_stat_proc = subprocess.run(["dpkg", "-s", "mariadb"], capture_output=True, text=True)
 
 if "Status: install ok installed" in check_stat_proc.stdout:
     log("Package 'MariaDB' is already installed")
 else:
     log("Package 'MariaDB' is not installed")
     log("Installing...")
-    install_proc = subprocess.call(["pkg", "in", "mariadb", "-y"])
+    install_proc = subprocess.run(["pkg", "in", "mariadb", "-y"])
     code = install_proc.returncode
     if code == 0:
         log("Installation complete")
