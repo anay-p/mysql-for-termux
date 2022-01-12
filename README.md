@@ -24,7 +24,7 @@ You can also go to settings and turn off notifications for Termux if you find it
 ## Command
 This is the command to be entered in step 2:
 ```shell
-yes | pkg upgrade && pkg in git python -y && cd && git clone "https://github.com/TheLastAirbendr/mysql-for-termux.git" && cd mysql-for-termux && python installer.py && source ~/../usr/etc/bash.bashrc
+yes | pkg upgrade && pkg in git python -y && cd && git clone "https://github.com/anay-p/mysql-for-termux.git" && cd mysql-for-termux && python installer.py && source ~/../usr/etc/bash.bashrc
 ```
 
 ## Troubleshooting Errors
